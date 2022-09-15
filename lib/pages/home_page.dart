@@ -1,11 +1,13 @@
 // ignore_for_file: library_private_types_in_public_api
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:patterns_setstate/model/post_model.dart';
 import 'package:patterns_setstate/services/http_service.dart';
 
 import 'create_or_update_post.dart';
+import 'detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -148,18 +150,21 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      child: Container(
-        padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              post.title?.toUpperCase() ?? "",
-              style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 5),
-            Text(post.body ?? ""),
-          ],
+      child: GestureDetector(
+        onTap: () => Navigator.push(context, CupertinoPageRoute(builder: (context) => DetailPage(id: post.id))),
+        child: Container(
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                post.title?.toUpperCase() ?? "",
+                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 5),
+              Text(post.body ?? ""),
+            ],
+          ),
         ),
       ),
     );

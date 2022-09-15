@@ -11,6 +11,7 @@ class Network {
 
   static String API_LIST = "/posts";
   static String API_CREATE = "/posts";
+  static String API_DETAIL = "/posts/"; //{id}
   static String API_UPDATE = "/posts/"; //{id}
   static String API_DELETE = "/posts/"; //{id}
 
